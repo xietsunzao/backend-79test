@@ -10,7 +10,7 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $accounts = Account::all();
+        $accounts = Account::select('id', 'account_name')->get();
         return response()->json($accounts);
     }
 
