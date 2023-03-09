@@ -17,10 +17,10 @@ class AccountSeeder extends Seeder
     {
         DB::table('accounts')->insert([
             [
-                'name' => 'Customer1'
+                'account_name' => 'Customer1'
             ],
             [
-                'name' => 'Customer2'
+                'account_name' => 'Customer2'
             ]
         ]);
     }
