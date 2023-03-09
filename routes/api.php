@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // route group controller
 Route::group(['prefix' => 'accounts'], function () {
     Route::get('/', [AccountController::class, 'index']);
+    Route::get('/{account}', [AccountController::class, 'show']);
 });
