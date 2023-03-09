@@ -14,8 +14,9 @@ class AccountController extends Controller
         return response()->json($accounts);
     }
 
-    public function show(Account $account)
+    public function show($id)
     {
+        $account = Account::select('id', 'account_name')->find($id);
         return response()->json($account);
     }
 }
