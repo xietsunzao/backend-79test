@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Point extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'account_id',
+        'point'
+    ];
 }
