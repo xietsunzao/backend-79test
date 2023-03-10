@@ -40,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');
     Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transaction.show');
+    Route::get('/transactions/{account_id}/account', [TransactionController::class, 'showByAccount'])->name('transaction.showByAccount');
     Route::post('/transactions', [TransactionController::class, 'store'])->name('transaction.store');
 });
 
