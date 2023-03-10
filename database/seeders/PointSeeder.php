@@ -16,14 +16,8 @@ class PointSeeder extends Seeder
     public function run()
     {
         DB::table('points')->insert([
-            [
-                'account_id' => 1,
-                'point' => 100,
-            ],
-            [
-                'account_id' => 2,
-                'point' => 200,
-            ]
+            'account_id' => 1,
+            'point' => 100,
         ]);
     }
 }
