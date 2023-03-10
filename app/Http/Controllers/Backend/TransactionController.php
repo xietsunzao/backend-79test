@@ -28,8 +28,38 @@ class TransactionController extends Controller
     public function store(TransactionRequest $request)
     {
         $transaction = Transaction::create($request->all());
-        return response()->json($transaction, 201);
+        $responses = [
+            'message' => 'Transaction created',
+            'data' => $transaction
+        ];
+        return response()->json($responses, 201);
     }
 
+    public function update(TransactionRequest $request, $id)
+    {
+        $transaction = Transaction::find($id);
 
+        if (!$transaction) {
+            return response()->json(['message' => 'Transaction not found'], 404);
+        }
+
+        $transaction->update($request->all());
+        $responses = [
+            'message' => 'Transaction updated',
+            'data' => $transaction
+        ];
+        return response()->json($responses, 200);
+    }
+
+    public function destroy($id)
+    {
+        $transaction = Transaction::find($id);
+
+        if (!$transaction) {
+            return response()->json(['message' => 'Transaction not found'], 404);
+        }
+
+        $transaction->delete();
+        return response()->json(['message' => 'Transaction deleted'], 200);
+    }
 }
