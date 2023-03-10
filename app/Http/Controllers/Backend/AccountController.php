@@ -17,6 +17,12 @@ class AccountController extends Controller
     public function show($id)
     {
         $account = Account::select('id', 'account_name')->find($id);
+        if (!$account) {
+            return response()->json([
+                'message' => 'Account not found'
+            ], 404);
+        }
+
         return response()->json($account);
     }
 
@@ -29,4 +35,22 @@ class AccountController extends Controller
         ];
         return response()->json($reponses);
     }
+
+    public function update(AccountRequest $request, $id)
+    {
+        $account = Account::find($id);
+        if (!$account) {
+            return response()->json([
+                'message' => 'Account not found'
+            ], 404);
+        }
+        $account->update($request->all());
+        $reponses = [
+            'message' => 'Account updated successfully',
+            'account' => $account
+        ];
+        return response()->json($reponses);
+    }
+
+
 }
