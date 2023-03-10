@@ -52,5 +52,17 @@ class AccountController extends Controller
         return response()->json($reponses);
     }
 
-
+    public function destroy($id)
+    {
+        $account = Account::find($id);
+        if (!$account) {
+            return response()->json([
+                'message' => 'Account not found'
+            ], 404);
+        }
+        $account->delete();
+        return response()->json([
+            'message' => 'Account deleted successfully'
+        ]);
+    }
 }
