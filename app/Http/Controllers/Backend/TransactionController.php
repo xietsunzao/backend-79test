@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::select('id', 'account_id', 'amount', 'type')->get();
         return response()->json($transactions, 200);
     }
 
