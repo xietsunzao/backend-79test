@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\PointController;
+use App\Http\Controllers\Backend\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/points', [PointController::class, 'index'])->name('point.index');
     Route::get('/points/{id}', [PointController::class, 'show'])->name('point.show');
     Route::get('/points/{account_id}/account', [PointController::class, 'showByAccount'])->name('point.showByAccount');
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/reports/transactions', [ReportController::class, 'getReportTransactionByDate'])->name('report.transactionByDate');
 });
