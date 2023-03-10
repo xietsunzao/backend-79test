@@ -31,6 +31,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/accounts', [AccountController::class, 'index'])->name('account.index');
     Route::get('/accounts/{id}', [AccountController::class, 'show'])->name('account.show');
     Route::post('/accounts', [AccountController::class, 'store'])->name('account.store');
-    Route::put('/accounts/{id}', [AccountController::class, 'update'])->name('account.update');
+    Route::post('/accounts/{id}', [AccountController::class, 'update'])->name('account.update');
     Route::delete('/accounts/{id}', [AccountController::class, 'destroy'])->name('account.destroy');
 });
