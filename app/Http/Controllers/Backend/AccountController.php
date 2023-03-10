@@ -19,4 +19,14 @@ class AccountController extends Controller
         $account = Account::select('id', 'account_name')->find($id);
         return response()->json($account);
     }
+
+    public function store(AccountRequest $request)
+    {
+        $account = Account::create($request->all());
+        $reponses = [
+            'message' => 'Account created successfully',
+            'account' => $account
+        ];
+        return response()->json($reponses);
+    }
 }
