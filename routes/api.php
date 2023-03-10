@@ -41,8 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');
     Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transaction.show');
     Route::post('/transactions', [TransactionController::class, 'store'])->name('transaction.store');
-    Route::post('/transactions/{id}', [TransactionController::class, 'update'])->name('transaction.update');
-    Route::delete('/transactions/{id}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
