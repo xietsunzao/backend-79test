@@ -13,7 +13,7 @@ class AccountRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class AccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:50'
+            'account_name' => 'required|string|max:50'
         ];
     }
 }
