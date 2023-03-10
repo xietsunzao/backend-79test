@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\TransactionController;
+use App\Http\Controllers\Backend\PointController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,13 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');
     Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transaction.show');
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transaction.store');
+    Route::post('/transactions/{id}', [TransactionController::class, 'update'])->name('transaction.update');
+    Route::delete('/transactions/{id}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/points', [PointController::class, 'index'])->name('point.index');
+    Route::get('/points/{id}', [PointController::class, 'show'])->name('point.show');
+    Route::get('/points/{account_id}/account', [PointController::class, 'showByAccount'])->name('point.showByAccount');
 });
